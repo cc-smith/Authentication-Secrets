@@ -24,7 +24,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "start": "node server.js",
+    "start": "node app.js",
     "node": "14.17.1"
   }
 }
