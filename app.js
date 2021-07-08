@@ -10,7 +10,22 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
+
+
+
+
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://ccsmith39:cacti6corn@cluster0.jdbpb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("myFirstDatabase").collection("users");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 const app = express();
+
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -27,7 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://ccsmith39:cacti6corn@cluster0.jdbpb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
