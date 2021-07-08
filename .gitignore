@@ -2,8 +2,10 @@
 logs
 *.log
 npm-debug.log*
+.DS_Store
 yarn-debug.log*
 yarn-error.log*
+/*.env
 
 # Runtime data
 pids
